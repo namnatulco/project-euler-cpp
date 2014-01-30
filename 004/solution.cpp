@@ -6,9 +6,18 @@ using std::string;
 #include<sstream>
 using std::ostringstream;
 
+const unsigned int MAX = 9999;
 
 unsigned int maximum_value=0;
 unsigned int maximum_array[2]={0,0};
+
+//count the amount of (base 10) digits in v.
+int compute_digits(unsigned int v){
+  ostringstream ss;
+  ss << v;
+  string r = ss.str();
+  return r.length();
+}
 
 //checks whether x is a palindrome by string conversion.
 bool is_palindrome(unsigned int x){
@@ -29,8 +38,8 @@ bool is_palindrome(unsigned int x){
 
 int main(){
   //brute force all the things
-  for(unsigned int i=999;i>99;i--){
-    for(unsigned int j=999;j>99;j--){
+  for(unsigned int i=MAX;i>MAX/10;i--){
+    for(unsigned int j=MAX;j>MAX/10;j--){
       if(i*j>maximum_value && is_palindrome(i*j)){
         maximum_value = i*j;
         maximum_array[0]=i;
@@ -39,6 +48,6 @@ int main(){
     }
   }
   
-  cout << "Biggest palindrome that is a product of 2 3-digit numbers is "<< maximum_value <<"=" << maximum_array[0] << "*" << maximum_array[1] <<"." << endl;
+  cout << "Biggest palindrome that is a product of 2 "<< compute_digits(MAX) <<"-digit numbers is "<< maximum_value <<"=" << maximum_array[0] << "*" << maximum_array[1] <<"." << endl;
   return 0;
 }
