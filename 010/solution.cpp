@@ -3,6 +3,7 @@ using std::cout;
 using std::endl;
 #include<vector>
 using std::vector;
+#include<math.h>
 
 //C libs
 #include<stdlib.h>
@@ -30,7 +31,7 @@ int main(int argc, char** argv)
     for(auto p = primes.begin(); (!found_divisor) && (p != primes.end()); p++)
     {
      unsigned long long prime = (*p);
-      if(prime>value/2)
+      if(prime>sqrt(value))
       { //at this point, prime can never divide value.
         //interesting side-note; this saves ~50% time for GOAL=500000
         break;
