@@ -9,7 +9,7 @@ using std::stringstream;
 //for atoi, we need the C header.
 #include<stdlib.h>
 
-int chartoint(char x){
+int chartoint(const char& x){
   char tmp[2];
   tmp[0]=x;
   tmp[1]='\0';
@@ -56,7 +56,6 @@ int main()
       product = product * vnext;
     } else
     {
-      cout << "new sequence: ";
       //the first number in the previous sequence was a 0. From here, it is no
       //longer part of the sequence, but the product is still 0. We need to re-
       //compute the sequence.
@@ -67,13 +66,10 @@ int main()
       {
         int v = chartoint(*x);
         product = product * (v );
-        cout << v << " ";
       }
-      cout << "which gives a product of: " << product << endl;
     }
     if(product > max_product){
       max_product = product;
-      cout << "Current biggest product: " << max_product << endl;
     }
     next_number++;
   }
